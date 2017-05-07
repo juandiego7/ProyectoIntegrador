@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SelectableItemThemeGrisOscuro">
+        <item name="colorControlHighlight">@color/gris_oscuro_presionado</item>
+    </style>
+
+    <style name="SelectableItemThemeGris">
+        <item name="colorControlHighlight">@color/gris_claro</item>
+    </style>
+
+    <style name="SelectableItemBackground">
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="SelectableItemBackground.Gris">
+        <item name="android:theme">@style/SelectableItemThemeGris</item>
+    </style>
+
+    <style name="SelectableItemBackground.GrisOscuro">
+        <item name="android:theme">@style/SelectableItemThemeGrisOscuro</item>
+    </style>
+</resources>

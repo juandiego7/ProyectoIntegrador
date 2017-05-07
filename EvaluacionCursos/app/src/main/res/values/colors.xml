@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0a351c</color>
+    <color name="colorPrimaryDark">#19321b</color>
+    <color name="colorAccent">#6c9a06</color>
+    <color name="verde_0a351c">#0a351c</color>
+    <color name="verde_6c9a06">#6c9a06</color>
+
+
+    <color name="verde_oscuro">#19321b</color>
+    <color name="verde_limon">#95c11e</color>
+    <color name="gris_claro">#b7b7ba</color>
+    <color name="gris_medio">#6f6f6e</color>
+    <color name="gris_oscuro">#3c3c3b</color>
+    <color name="gris_oscuro_presionado">#2c2c2b</color>
+</resources>
