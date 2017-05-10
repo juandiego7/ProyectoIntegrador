@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +25,6 @@ import projects.juandiego.com.evaluacioncursos.models.TitleChild;
 import projects.juandiego.com.evaluacioncursos.models.TitleCreator;
 import projects.juandiego.com.evaluacioncursos.models.TitleParent;
 import projects.juandiego.com.evaluacioncursos.services.DescargarIntentService;
-import projects.juandiego.com.evaluacioncursos.services.MyReceiver;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,15 +33,21 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Button btnEvaluar;
-
-    private MyReceiver mReceiver;
+    public static Context context;
 
     public static Context getContext(){
         return context;
     }
 
-    public static Context context;
-
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d("onHandleIntent", "Recibido");
+            Toast.makeText(MainActivity.getContext(), "Recibido "+intent.getAction(), Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.getContext(), EvaluarActivity.class);
+            startActivity(i);
+        }
+    };
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -67,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
-
     }
 
 
@@ -91,15 +96,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        mReceiver = new MyReceiver();
-        registerReceiver(mReceiver, new IntentFilter(DescargarIntentService.ACTION_DESCARGAR_PREGUNTAS));
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mReceiver, new IntentFilter(DescargarIntentService.ACTION_DESCARGAR_PREGUNTAS));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(mReceiver);
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mReceiver);
     }
+
 }

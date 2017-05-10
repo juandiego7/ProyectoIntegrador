@@ -2,6 +2,7 @@ package projects.juandiego.com.evaluacioncursos.services;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import android.support.v4.content.LocalBroadcastManager;
@@ -72,7 +73,8 @@ public class DescargarIntentService extends IntentService {
                 //MateriaDAO.getInstance().eliminarNotas();
                 //MateriaDAO.getInstance().saveAll(response.body());
                 Log.d("onHandleIntent", "isSuccessful");
-
+                /*MainActivity.getContext()
+                        .sendBroadcast(new Intent(ACTION_DESCARGAR_PREGUNTAS));*/
                 LocalBroadcastManager.getInstance(DescargarIntentService.this)
                         .sendBroadcast(new Intent(ACTION_DESCARGAR_PREGUNTAS));
 
@@ -86,8 +88,7 @@ public class DescargarIntentService extends IntentService {
         } catch (IOException e) {
             Log.d("onHandleIntent", "Exception: "+ e.getMessage());
             LocalBroadcastManager.getInstance(DescargarIntentService.this)
-                    .sendBroadcast(new Intent(ACTION_DESCARGAR_PREGUNTAS)
-                            .putExtra(ERROR, getResources().getString(R.string.error_conexion)));
+                    .sendBroadcast(new Intent(ACTION_DESCARGAR_PREGUNTAS).putExtra(ERROR, getResources().getString(R.string.error_conexion)));
             e.printStackTrace();
         }
     }

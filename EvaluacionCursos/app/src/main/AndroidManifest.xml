@@ -26,11 +26,6 @@
 
         <activity android:name=".EvaluarActivity" />
 
-        <receiver
-            android:name=".services.MyReceiver"
-            android:enabled="true"
-            android:exported="false">
-        </receiver>
     </application>
 
 </manifest>
