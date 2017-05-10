@@ -1,6 +1,8 @@
 package projects.juandiego.com.evaluacioncursos;
 
 
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,23 +11,29 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import projects.juandiego.com.evaluacioncursos.adapter.AdapterEvaluacion;
 import projects.juandiego.com.evaluacioncursos.models.Question;
+import projects.juandiego.com.evaluacioncursos.models.Respuesta;
 import projects.juandiego.com.evaluacioncursos.models.Teacher;
 import projects.juandiego.com.evaluacioncursos.models.TeacherCreator;
+import projects.juandiego.com.evaluacioncursos.services.DescargarIntentService;
+import projects.juandiego.com.evaluacioncursos.utils.RestfulServices;
+import retrofit2.Response;
 
 
 public class EvaluarActivity extends AppCompatActivity {
 
-    RecyclerView recyclerViewEvaluacion;
-    TextView btnEnviar;
+    private RecyclerView recyclerViewEvaluacion;
+    private TextView btnEnviar;
     private Toolbar toolbar;
 
     @Override
@@ -56,11 +64,12 @@ public class EvaluarActivity extends AppCompatActivity {
 
     }
 
-
     private List<ParentObject> initData() {
         TeacherCreator titleCreator = TeacherCreator.get(this);
         List<Teacher> titles = titleCreator.getAll();
         List<ParentObject> parentObject = new ArrayList<>();
+
+
         for(Teacher title:titles)
         {
             List<Object> childList = new ArrayList<>();

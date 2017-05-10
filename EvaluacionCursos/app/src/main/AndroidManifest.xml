@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="projects.juandiego.com.evaluacioncursos">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EvaluarActivity"></activity>
+
+        <service
+            android:name=".services.DescargarIntentService"
+            android:exported="false">
+        </service>
+
+        <activity android:name=".EvaluarActivity" />
+
+        <receiver
+            android:name=".services.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+        </receiver>
     </application>
 
 </manifest>
