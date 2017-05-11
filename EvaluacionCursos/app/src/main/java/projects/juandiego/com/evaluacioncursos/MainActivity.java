@@ -17,10 +17,13 @@ import android.widget.Toast;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import projects.juandiego.com.evaluacioncursos.adapter.MyAdapter;
+import projects.juandiego.com.evaluacioncursos.config.DatabaseHelper;
+import projects.juandiego.com.evaluacioncursos.models.Question;
 import projects.juandiego.com.evaluacioncursos.models.TitleChild;
 import projects.juandiego.com.evaluacioncursos.models.TitleCreator;
 import projects.juandiego.com.evaluacioncursos.models.TitleParent;
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mReceiver, new IntentFilter(DescargarIntentService.ACTION_DESCARGAR_PREGUNTAS));
+        //DescargarIntentService.startActionDescargarPreguntas();
     }
 
     @Override

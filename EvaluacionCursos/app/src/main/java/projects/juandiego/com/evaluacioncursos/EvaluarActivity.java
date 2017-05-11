@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,10 +18,12 @@ import android.widget.Toast;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import projects.juandiego.com.evaluacioncursos.adapter.AdapterEvaluacion;
+import projects.juandiego.com.evaluacioncursos.config.DatabaseHelper;
 import projects.juandiego.com.evaluacioncursos.models.Question;
 import projects.juandiego.com.evaluacioncursos.models.Respuesta;
 import projects.juandiego.com.evaluacioncursos.models.Teacher;
@@ -68,31 +71,25 @@ public class EvaluarActivity extends AppCompatActivity {
         TeacherCreator titleCreator = TeacherCreator.get(this);
         List<Teacher> titles = titleCreator.getAll();
         List<ParentObject> parentObject = new ArrayList<>();
+        List<Question> listPreguntas = null;
+        try {
+            listPreguntas = DatabaseHelper.getInstance().getDao(Question.class).queryForAll();
+        } catch (SQLException e) {
+            Log.d("onHandleIntent", "Error cosultando la base de datos");
+            e.printStackTrace();
+        }
 
 
-        for(Teacher title:titles)
-        {
+        for(Teacher title:titles)        {
             List<Object> childList = new ArrayList<>();
-            childList.add(new Question("1","Seguridad en exposiciones","3"));
-            childList.add(new Question("2","Respuesta clara y acertada a preguntas","3"));
-            childList.add(new Question("3","Dominio de los temas del curso o actividad curricular","3"));
-            childList.add(new Question("4","Eficiencia en el uso del tiempo de clase o actividad curricular","3"));
-            childList.add(new Question("5","Empleo de recursos didacticos","3"));
-            childList.add(new Question("6","Orden, coherencia y claridad en la exposicion de los temas","3"));
-            childList.add(new Question("7","Capacidad para despertar interes","3"));
-            childList.add(new Question("8","Apoyo a las actividades de aprendizaje independientes","3"));
-            childList.add(new Question("9","Puntualidad y asistencia a las sesiones de clase o actividades","3"));
-            childList.add(new Question("10","Puntualidad en la entrega de notas","3"));
-            childList.add(new Question("11","Disposicion para atender consultas fuera de la actividad curricular","3"));
-            childList.add(new Question("12","Ecuanimidad y respeto en el trato con los estudiantes","3"));
-            childList.add(new Question("13","Objetivo en las calificaciones","3"));
-            childList.add(new Question("14","Elaboracion de pruebas y examenes","3"));
-            childList.add(new Question("15","Si usted tuviera que darle una calificacion global al profesor ¿Cual pondria?","3"));
-            childList.add(new Question("16","Conveniencia de la intensidad horaria semanal","3"));
-            childList.add(new Question("17","Logro de los objetivos formulados en el curso o actividad curricular","3"));
-            childList.add(new Question("18","Relacion con los prerriquisitos del curso o actividad curricular","3"));
-            childList.add(new Question("19","Interes y actualidad de los contenidos del curso o actividad curricular","3"));
-            childList.add(new Question("20","Es importante dentro del plan de estudios","3"));
+            if(listPreguntas == null){
+                childList.add(new Question("1","Sin preguntas","3"));
+                //finish();
+            }else{
+                for (Question q: listPreguntas){
+                    childList.add(q);
+                }
+            }
             title.setChildObjectList(childList);
             parentObject.add(title);
         }

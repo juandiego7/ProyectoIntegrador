@@ -2,7 +2,9 @@ package projects.juandiego.com.evaluacioncursos.models;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
