@@ -4,10 +4,12 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/gris_oscuro">
 
 
     <RelativeLayout
+        style="@style/SelectableItemBackground.GrisOscuro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
