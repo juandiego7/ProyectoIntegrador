@@ -16,11 +16,11 @@ import projects.juandiego.com.evaluacioncursos.R;
 public class QuestionViewHolder extends ChildViewHolder {
     public TextView tvType;
     public TextView tvDescription;
-    //public Spinner spAnswers;
+    public Spinner spAnswers;
     public QuestionViewHolder(View itemView) {
         super(itemView);
         //tvType = (TextView)itemView.findViewById(R.id.tvQuestionType);
         tvDescription = (TextView)itemView.findViewById(R.id.tvQuestionDescription);
-        //spAnswers = (Spinner)itemView.findViewById(R.id.planets_spinner);
+        spAnswers = (Spinner)itemView.findViewById(R.id.answer_spinner);
     }
 }

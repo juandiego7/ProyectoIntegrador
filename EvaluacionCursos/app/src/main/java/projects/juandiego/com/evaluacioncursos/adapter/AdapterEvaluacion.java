@@ -59,6 +59,10 @@ public class AdapterEvaluacion extends ExpandableRecyclerAdapter<TeacherViewHold
         Question title = (Question) o;
         //questionViewHolder.tvType.setText(title.getType());
         questionViewHolder.tvDescription.setText(title.getDescription());
+        if ("0".equals(title.getType())){
+            questionViewHolder.spAnswers.setVisibility(View.INVISIBLE);
+        }
+
         //questionViewHolder..setText(title.getAnswer());
 
     }

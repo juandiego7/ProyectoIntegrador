@@ -65,6 +65,7 @@ public class EvaluarActivity extends AppCompatActivity {
 
         recyclerViewEvaluacion.setAdapter(adapter);
 
+
     }
 
     private List<ParentObject> initData() {
@@ -72,14 +73,40 @@ public class EvaluarActivity extends AppCompatActivity {
         List<Teacher> titles = titleCreator.getAll();
         List<ParentObject> parentObject = new ArrayList<>();
         List<Question> listPreguntas = null;
+        List<Question> list = new ArrayList<Question>();
         try {
             listPreguntas = DatabaseHelper.getInstance().getDao(Question.class).queryForAll();
         } catch (SQLException e) {
             Log.d("onHandleIntent", "Error cosultando la base de datos");
             e.printStackTrace();
         }
-
-
+        list.add(new Question("0","CONOCIMIENTOS",""));
+        list.add(new Question("Seguridad en exposiciones"));
+        list.add(new Question("Respuesta clara y acertada a preguntas"));
+        list.add(new Question("Dominio de los temas del curso o actividad curricular"));
+        list.add(new Question("0","METODOLOGIA",""));
+        list.add(new Question("Eficiencia en el uso del tiempo de clase o actividad curricular"));
+        list.add(new Question("Empleo de recursos didacticos"));
+        list.add(new Question("Orden, coherencia y claridad en las exposiciones de los temas"));
+        list.add(new Question("Capacidad para despertar interes"));
+        list.add(new Question("Apoyo a las actividades de aprendizaje independientes"));
+        list.add(new Question("Puntualidad y asistencia a las sesiones de clase o actividades"));
+        list.add(new Question("0","RELACIONES CON LOS ESTUDIANTES",""));
+        list.add(new Question("Puntualidad en la entrega de notas"));
+        list.add(new Question("Disposición para atender consultas fuera de la actividad curricular"));
+        list.add(new Question("Ecuanimidad y respeto en el trato con los estudiantes"));
+        list.add(new Question("0","MANEJO DE LA EVALUACION",""));
+        list.add(new Question("Objetivo en las calificaciones"));
+        list.add(new Question("Elaboracion de pruebas y exámenes"));
+        list.add(new Question("0","APRECIACION GENERAL",""));
+        list.add(new Question("Si usted tuviera que darle una calificación global al profesor¿Cual le pondria?"));
+        list.add(new Question("0","EVALUACION DEL CURSO",""));
+        list.add(new Question("Conveniencia de la intensidad horaria semanal"));
+        list.add(new Question("Logros de los objetivos formulados en el curso o actividad curricular"));
+        list.add(new Question("Relacion con los prerrequisitos del curso o actividad curricular"));
+        list.add(new Question("Interes y actualidad de los contenidos del curso o actividad curricular"));
+        list.add(new Question("Es importante dentro del plan de estudios"));
+        listPreguntas = list;
         for(Teacher title:titles)        {
             List<Object> childList = new ArrayList<>();
             if(listPreguntas == null){
