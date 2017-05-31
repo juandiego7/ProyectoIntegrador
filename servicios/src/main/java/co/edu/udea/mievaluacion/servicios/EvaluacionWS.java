@@ -1,6 +1,15 @@
 package co.edu.udea.mievaluacion.servicios;
 
+import java.rmi.RemoteException;
+import java.util.List;
+
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import co.edu.udea.mievaluacion.bl.EvaluacionBL;
+import co.edu.udea.mievaluacion.dto.Pregunta;
 
 /**
  * Implementacion de los servicios web de la logica de negocio para los dispositivos
@@ -9,16 +18,24 @@ import javax.ws.rs.Path;
  * @version 1
  */
 
-@Path("loan")//Definicion de la ruta con que va a responder el servicio
+@Path("evaluacion")//Definicion de la ruta con que va a responder el servicio
 public class EvaluacionWS {
 
-	/**
-	 * Servicio para retornar todos los prestamos o solicitudes de prestamos
-	 * @see RF11 with status=RESERVADO
-	 * @see RF12 with status=PRESTADO
-	 * @return Lista de Préstamos
-	 * @throws RemoteException
-	 */
+	EvaluacionBL evaluacionBL = new EvaluacionBL();
+	
+	@GET//Metodo http con que responde este metodo
+	@Path("puedervernotas")//Definicion de la ruta para invocar este metodo
+	@Produces(MediaType.APPLICATION_JSON)//Formato de respuesta
+	public String puedeVerNotas(@QueryParam("semestre")String username,
+			@QueryParam("startDate")String startDate,
+			@QueryParam("endDate")String endDate,) throws RemoteException{
+
+		try {
+			return evaluacionBL.puedeVerNotas();
+		} catch (Exception e) {
+			throw new RemoteException("Problema consultando");
+		}
+	}
 //	@GET//Metodo http con que responde este metodo
 //	@Path("all")//Definicion de la ruta para invocar este metodo
 //	@Produces(MediaType.APPLICATION_JSON)//Formato de respuesta

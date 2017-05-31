@@ -16,6 +16,30 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:titleTextColor="@android:color/white" />
 
+    <TextView
+        android:id="@+id/tvMateria"
+        android:background="@color/gris_oscuro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingEnd="8dip"
+        android:paddingLeft="8dip"
+        android:paddingRight="8dip"
+        android:paddingStart="8dip"
+        android:paddingTop="8dip"
+        android:paddingBottom="1dip"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="20300-5 Proyecto Integrador I"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/tvMateria"
+        android:background="@color/verde_6c9a06" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/myRecyclerViewEvaluar"
         android:layout_width="match_parent"

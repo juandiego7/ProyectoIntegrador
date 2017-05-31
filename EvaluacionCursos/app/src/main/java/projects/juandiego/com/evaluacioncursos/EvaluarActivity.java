@@ -48,7 +48,7 @@ public class EvaluarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Evalua tu Curso");
+        setTitle("Mi Evaluacion");
         setContentView(R.layout.activity_evaluar);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
