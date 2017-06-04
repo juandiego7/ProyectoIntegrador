@@ -25,7 +25,8 @@ public class PreguntaBL {
 			preguntas = new ArrayList<>();
 			while(rs.next()){
 				preguntas.add(new Pregunta(rs.getString("numero"),
-						rs.getString("tipo"),rs.getString("descripcion")));
+						rs.getString("tipo"),rs.getString("descripcion"),
+						rs.getString("categoria")));
 			}
 			
 		} catch (SQLException e) {//No existe la BD

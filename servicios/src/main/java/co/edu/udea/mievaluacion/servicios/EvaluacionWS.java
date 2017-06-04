@@ -3,13 +3,20 @@ package co.edu.udea.mievaluacion.servicios;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import co.edu.udea.mievaluacion.bl.EvaluacionBL;
+import co.edu.udea.mievaluacion.bl.Respuesta;
+import co.edu.udea.mievaluacion.dto.Evaluacion;
 import co.edu.udea.mievaluacion.dto.Pregunta;
+import co.edu.udea.mievaluacion.dto.Ver;
 
 /**
  * Implementacion de los servicios web de la logica de negocio para los dispositivos
@@ -24,18 +31,25 @@ public class EvaluacionWS {
 	EvaluacionBL evaluacionBL = new EvaluacionBL();
 	
 	@GET//Metodo http con que responde este metodo
-	@Path("puedervernotas")//Definicion de la ruta para invocar este metodo
+	@Path("puedevernotas/{semestre}/{estudiante}")//Definicion de la ruta para invocar este metodo
 	@Produces(MediaType.APPLICATION_JSON)//Formato de respuesta
-	public String puedeVerNotas(@QueryParam("semestre")String username,
-			@QueryParam("startDate")String startDate,
-			@QueryParam("endDate")String endDate,) throws RemoteException{
+	public List<Ver> puedeVerNotas(@PathParam("semestre")String semestre,
+			@PathParam("estudiante")String estudiante) throws RemoteException{
 
 		try {
-			return evaluacionBL.puedeVerNotas();
+			return evaluacionBL.puedeVerNotas(semestre, estudiante);
 		} catch (Exception e) {
 			throw new RemoteException("Problema consultando");
 		}
 	}
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Respuesta prueba(Evaluacion evaluacion){
+		return evaluacionBL.regitrarEvaluacion(evaluacion);
+	}
+	
+	
 //	@GET//Metodo http con que responde este metodo
 //	@Path("all")//Definicion de la ruta para invocar este metodo
 //	@Produces(MediaType.APPLICATION_JSON)//Formato de respuesta

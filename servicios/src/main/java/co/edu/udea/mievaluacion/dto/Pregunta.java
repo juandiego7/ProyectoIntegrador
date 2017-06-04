@@ -16,6 +16,7 @@ public class Pregunta implements Serializable {
     private String numero;
     private String tipo;
     private String descripcion;
+    private String categoria;
 
     public Pregunta() {
     }
@@ -24,10 +25,11 @@ public class Pregunta implements Serializable {
         this.numero = numero;
     }
 
-    public Pregunta(String numero, String tipo, String descripcion) {
+    public Pregunta(String numero, String tipo, String descripcion, String categoria) {
         this.numero = numero;
         this.tipo = tipo;
         this.descripcion = descripcion;
+        this.categoria = categoria;
     }
 
     public String getNumero() {
@@ -53,5 +55,19 @@ public class Pregunta implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+	/**
+	 * @return the categoria
+	 */
+	public String getCategoria() {
+		return categoria;
+	}
+
+	/**
+	 * @param categoria the categoria to set
+	 */
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
     
 }

@@ -2,6 +2,7 @@ package co.edu.udea.mievaluacion.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -15,81 +16,124 @@ public class Evaluacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    private EvaluacionPK evaluacionPK;
-    private Date fechaInicio;
-    private Date fechaFin;
-    private String realizado;
+    private String semestre;
+    private String materia;
+    private String estudiante;
+    private String grupo;
+    private String profesor;
+    private List<Calificacion> respuestas; 
 
     public Evaluacion() {
     }
 
 
-    public Evaluacion(EvaluacionPK evaluacionPK, Date fechaInicio, Date fechaFin, String realizado) {
-        this.evaluacionPK = evaluacionPK;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.realizado = realizado;
-    }
+	/**
+	 * @param semestre
+	 * @param materia
+	 * @param estudiante
+	 * @param grupo
+	 * @param profesor
+	 * @param pregunta
+	 * @param respuesta
+	 * @param respuestas
+	 */
+	public Evaluacion(String semestre, String materia, String estudiante, String grupo, String profesor,
+			 List<Calificacion> respuestas) {
+		super();
+		this.semestre = semestre;
+		this.materia = materia;
+		this.estudiante = estudiante;
+		this.grupo = grupo;
+		this.profesor = profesor;
+		this.respuestas = respuestas;
+	}
 
-    public Evaluacion(int semestre, int materia, String estudiante, int grupo, String profesor) {
-        this.evaluacionPK = new EvaluacionPK(semestre, materia, estudiante, grupo, profesor);
-    }
 
-    public EvaluacionPK getEvaluacionPK() {
-        return evaluacionPK;
-    }
+	/**
+	 * @return the semestre
+	 */
+	public String getSemestre() {
+		return semestre;
+	}
 
-    public void setEvaluacionPK(EvaluacionPK evaluacionPK) {
-        this.evaluacionPK = evaluacionPK;
-    }
+	/**
+	 * @param semestre the semestre to set
+	 */
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
 
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
+	/**
+	 * @return the materia
+	 */
+	public String getMateria() {
+		return materia;
+	}
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
+	/**
+	 * @param materia the materia to set
+	 */
+	public void setMateria(String materia) {
+		this.materia = materia;
+	}
 
-    public Date getFechaFin() {
-        return fechaFin;
-    }
+	/**
+	 * @return the estudiante
+	 */
+	public String getEstudiante() {
+		return estudiante;
+	}
 
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
+	/**
+	 * @param estudiante the estudiante to set
+	 */
+	public void setEstudiante(String estudiante) {
+		this.estudiante = estudiante;
+	}
 
-    public String getRealizado() {
-        return realizado;
-    }
+	/**
+	 * @return the grupo
+	 */
+	public String getGrupo() {
+		return grupo;
+	}
 
-    public void setRealizado(String realizado) {
-        this.realizado = realizado;
-    }
+	/**
+	 * @param grupo the grupo to set
+	 */
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (evaluacionPK != null ? evaluacionPK.hashCode() : 0);
-        return hash;
-    }
+	/**
+	 * @return the profesor
+	 */
+	public String getProfesor() {
+		return profesor;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Evaluacion)) {
-            return false;
-        }
-        Evaluacion other = (Evaluacion) object;
-        if ((this.evaluacionPK == null && other.evaluacionPK != null) || (this.evaluacionPK != null && !this.evaluacionPK.equals(other.evaluacionPK))) {
-            return false;
-        }
-        return true;
-    }
+	/**
+	 * @param profesor the profesor to set
+	 */
+	public void setProfesor(String profesor) {
+		this.profesor = profesor;
+	}
 
-    @Override
-    public String toString() {
-        return "com.udea.mavenproject1.Evaluacion[ evaluacionPK=" + evaluacionPK + " ]";
-    }
+
+	/**
+	 * @return the respuestas
+	 */
+	public List<Calificacion> getRespuestas() {
+		return respuestas;
+	}
+
+
+	/**
+	 * @param respuestas the respuestas to set
+	 */
+	public void setRespuestas(List<Calificacion> respuestas) {
+		this.respuestas = respuestas;
+	}
+
     
 }

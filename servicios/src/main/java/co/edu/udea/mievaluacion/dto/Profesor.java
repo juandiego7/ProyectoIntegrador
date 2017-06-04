@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-
 public class Profesor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
-    private String cedula;
     private String nombre;
-    private String apellidos;
+    private String cedula;
+    private String codigoMateria;
+    private String nombreMateria;
+    private String grupoMateria;
 
     public Profesor() {
     }
@@ -25,13 +25,23 @@ public class Profesor implements Serializable {
         this.cedula = cedula;
     }
 
-    public Profesor(String cedula, String nombre, String apellidos) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-    }
+    /**
+	 * @param nombre
+	 * @param cedula
+	 * @param codigoMateria
+	 * @param nombreMateria
+	 * @param grupoMateria
+	 */
+	public Profesor(String nombre, String cedula, String codigoMateria, String nombreMateria, String grupoMateria) {
+		super();
+		this.nombre = nombre;
+		this.cedula = cedula;
+		this.codigoMateria = codigoMateria;
+		this.nombreMateria = nombreMateria;
+		this.grupoMateria = grupoMateria;
+	}
 
-    public String getCedula() {
+	public String getCedula() {
         return cedula;
     }
 
@@ -47,11 +57,47 @@ public class Profesor implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
-    }
+	/**
+	 * @return the codigoMateria
+	 */
+	public String getCodigoMateria() {
+		return codigoMateria;
+	}
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
+	/**
+	 * @param codigoMateria the codigoMateria to set
+	 */
+	public void setCodigoMateria(String codigoMateria) {
+		this.codigoMateria = codigoMateria;
+	}
+
+	/**
+	 * @return the nombreMateria
+	 */
+	public String getNombreMateria() {
+		return nombreMateria;
+	}
+
+	/**
+	 * @param nombreMateria the nombreMateria to set
+	 */
+	public void setNombreMateria(String nombreMateria) {
+		this.nombreMateria = nombreMateria;
+	}
+
+	/**
+	 * @return the grupoMateria
+	 */
+	public String getGrupoMateria() {
+		return grupoMateria;
+	}
+
+	/**
+	 * @param grupoMateria the grupoMateria to set
+	 */
+	public void setGrupoMateria(String grupoMateria) {
+		this.grupoMateria = grupoMateria;
+	}
+
+
 }
