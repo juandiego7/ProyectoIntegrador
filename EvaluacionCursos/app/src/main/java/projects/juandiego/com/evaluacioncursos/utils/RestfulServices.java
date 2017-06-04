@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RestfulServices {
 
     //public static final String END_POINT = "http://hakuna.udea.edu.co:8080/NotasAndroidWS/api/";
-    public static final String END_POINT = "http://192.168.25.55:8080/ServiciosWebMiEvaluacion/webapi/";
+    public static final String END_POINT = "http://192.168.1.4:8080/servicios/webapi/";
     private static RestfulServicesI instance;
     private static Converter<ResponseBody, Respuesta> converter;
 

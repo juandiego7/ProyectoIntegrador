@@ -1,13 +1,20 @@
 package projects.juandiego.com.evaluacioncursos.utils;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 
-import projects.juandiego.com.evaluacioncursos.models.Question;
-import projects.juandiego.com.evaluacioncursos.models.Teacher;
+import projects.juandiego.com.evaluacioncursos.models.Evaluacion;
+import projects.juandiego.com.evaluacioncursos.models.Materia;
+import projects.juandiego.com.evaluacioncursos.models.Pregunta;
+import projects.juandiego.com.evaluacioncursos.models.Profesor;
+import projects.juandiego.com.evaluacioncursos.models.Respuesta;
+import projects.juandiego.com.evaluacioncursos.models.Ver;
 import retrofit2.Call;
-import retrofit2.Callback;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -15,11 +22,20 @@ import retrofit2.http.Path;
  */
 
 public interface RestfulServicesI {
-    @GET("preguntas")
-    Call<List<Question>> getPreguntas();
+    @GET("pregunta/all")
+    Call<List<Pregunta>> getPreguntas();
 
-    @GET("profesores")
-    Call<List<Teacher>> getProfesores();
+    @GET("profesor/{semestre}/{estudiante}")
+    Call<List<Profesor>> getProfesores(@Path("semestre") String semestre, @Path("estudiante") String estudiante);
+
+    @GET("materia/notas/{cedula}")
+    Call<List<Materia>> getNotas(@Path("cedula") String cedula);
+
+    @GET("evaluacion/puedevernotas/{semestre}/{estudiante}")
+    Call<List<Ver>> getPuedeVerNotas(@Path("semestre") String semestre, @Path("estudiante") String estudiante);
+
+    @POST("evaluacion")
+    Call<Respuesta> sendEvaluar(@Body() Evaluacion e);
 /*
     @GET("programas/{programa}/semestre/{semestre}")
     Call<List<Materia>> getDetalleSemestre(@Path("programa") Integer programa,

@@ -3,6 +3,7 @@
     package="projects.juandiego.com.evaluacioncursos">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +25,7 @@
             android:exported="false">
         </service>
 
-        <activity android:name=".EvaluarActivity" />
+        <activity android:name="EvaluarActivity" />
 
     </application>
 
