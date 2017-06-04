@@ -13,10 +13,28 @@ public class TitleParent implements ParentObject{
     private List<Object> mChildrenList;
     private UUID _id;
     private String title;
+    private String puedeVerNota;
+    private String codigo;
 
     public TitleParent(String title) {
         this.title = title;
         _id = UUID.randomUUID();
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getPuedeVerNota() {
+        return puedeVerNota;
+    }
+
+    public void setPuedeVerNota(String puedeVerNota) {
+        this.puedeVerNota = puedeVerNota;
     }
 
     public UUID get_id() {

@@ -16,8 +16,8 @@ import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import java.util.List;
 
 import projects.juandiego.com.evaluacioncursos.R;
-import projects.juandiego.com.evaluacioncursos.models.Question;
-import projects.juandiego.com.evaluacioncursos.models.Teacher;
+import projects.juandiego.com.evaluacioncursos.models.Pregunta;
+import projects.juandiego.com.evaluacioncursos.models.Profesor;
 import projects.juandiego.com.evaluacioncursos.viewHolders.QuestionViewHolder;
 import projects.juandiego.com.evaluacioncursos.viewHolders.TeacherViewHolder;
 
@@ -49,17 +49,16 @@ public class AdapterEvaluacion extends ExpandableRecyclerAdapter<TeacherViewHold
 
     @Override
     public void onBindParentViewHolder(TeacherViewHolder teacherViewHolder, int i, Object o) {
-        Teacher title = (Teacher)o;
-        teacherViewHolder.tvTeacherName.setText(title.getName());
-
+        Profesor title = (Profesor)o;
+        teacherViewHolder.tvTeacherName.setText(title.getNombre());
     }
 
     @Override
     public void onBindChildViewHolder(QuestionViewHolder questionViewHolder, int i, Object o) {
-        Question title = (Question) o;
-        //questionViewHolder.tvType.setText(title.getType());
-        questionViewHolder.tvDescription.setText(title.getDescription());
-        if ("0".equals(title.getType())){
+        Pregunta title = (Pregunta) o;
+        //questionViewHolder.tvType.setText(title.getTipo());
+        questionViewHolder.tvDescription.setText(title.getDescripcion());
+        if ("0".equals(title.getTipo())){
             questionViewHolder.spAnswers.setVisibility(View.INVISIBLE);
         }
 

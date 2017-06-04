@@ -51,6 +51,12 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder,T
     public void onBindParentViewHolder(TitleParentViewHolder titleParentViewHolder, int i, Object o) {
         TitleParent title = (TitleParent)o;
         titleParentViewHolder._textView.setText(title.getTitle());
+        titleParentViewHolder._textEvaluar.setHint(title.getCodigo());
+        if ("S".equals(title.getPuedeVerNota())){
+            titleParentViewHolder._textEvaluar.setVisibility(View.GONE);
+        }else{
+            titleParentViewHolder._textEvaluar.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -61,6 +67,5 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder,T
         titleChildViewHolder.option2.setText(title.getOption2());
         titleChildViewHolder.option3.setText(title.getOption3());
         titleChildViewHolder.option4.setText(title.getOption4());
-
     }
 }

@@ -27,14 +27,19 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <Button
+        <TextView
+            android:layout_alignParentBottom="true"
             android:id="@+id/btnEvaluar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:textSize="10dp"
+            android:textSize="15sp"
             android:onClick="onClick"
-            android:text="Evaluar"/>
+            android:text="@string/evaluar"
+            android:paddingRight="5dip"
+            android:paddingBottom="8dip"
+            android:background="@android:color/transparent"
+            android:textColor="@color/verde_6c9a06"/>
         <View
             android:layout_width="fill_parent"
             android:layout_height="3dp"

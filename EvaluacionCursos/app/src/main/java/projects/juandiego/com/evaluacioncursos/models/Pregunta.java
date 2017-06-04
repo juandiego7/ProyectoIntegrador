@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * Created by Juan Diego on 12/04/2017.
  */
 @DatabaseTable
-public class Question {
+public class Pregunta {
     @DatabaseField(id = true)
     private String numero;
     @DatabaseField
@@ -19,13 +19,13 @@ public class Question {
 
     private String answer;
 
-    public Question(){}
+    public Pregunta(){}
 
-    public Question(String description) {
+    public Pregunta(String description) {
         this.descripcion = description;
     }
 
-    public Question(String type, String description, String answer) {
+    public Pregunta(String type, String description, String answer) {
         this.tipo = type;
         this.descripcion = description;
         this.answer = answer;

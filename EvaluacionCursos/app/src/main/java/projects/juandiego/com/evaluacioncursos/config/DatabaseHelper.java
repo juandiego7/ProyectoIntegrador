@@ -12,7 +12,10 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import projects.juandiego.com.evaluacioncursos.MainActivity;
-import projects.juandiego.com.evaluacioncursos.models.Question;
+import projects.juandiego.com.evaluacioncursos.models.Materia;
+import projects.juandiego.com.evaluacioncursos.models.Pregunta;
+import projects.juandiego.com.evaluacioncursos.models.Profesor;
+import projects.juandiego.com.evaluacioncursos.models.Ver;
 
 /**
  * Created by rantonio.martinez on 10/05/17.
@@ -40,8 +43,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         instance = this;
 
         try {
-            TableUtils.createTableIfNotExists(connectionSource, Question.class);
-            Log.d("onHand", "Tabla creada");
+            TableUtils.createTableIfNotExists(connectionSource, Pregunta.class);
+            TableUtils.createTableIfNotExists(connectionSource, Materia.class);
+            TableUtils.createTableIfNotExists(connectionSource, Ver.class);
+            TableUtils.createTableIfNotExists(connectionSource, Profesor.class);
+            Log.d("onHand", "Tablas creadas");
             //TableUtils.createTableIfNotExists(connectionSource, Materia.class);
             //TableUtils.createTableIfNotExists(connectionSource, Programa.class);
             //TableUtils.createTableIfNotExists(connectionSource, Semestre.class);

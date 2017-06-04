@@ -19,6 +19,6 @@ public class TeacherViewHolder extends ParentViewHolder {
     public TeacherViewHolder(View itemView) {
         super(itemView);
         tvTeacherName = (TextView)itemView.findViewById(R.id.tvTeacherName);
-        _btnEnviar = (TextView) itemView.findViewById(R.id.btnSend);
+        _btnEnviar = (TextView) itemView.findViewById(R.id.btnSendEvaluacion);
     }
 }

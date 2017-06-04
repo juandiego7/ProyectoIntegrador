@@ -15,19 +15,19 @@ import java.util.List;
 
 public class TeacherCreator {
     static TeacherCreator _titleCreator;
-    List<Teacher> _titleParents;
+    List<Profesor> _titleParents;
 
     public TeacherCreator(Context context) {
         _titleParents = new ArrayList<>();
-        Teacher title = new Teacher("RAUL ANTONIO MARTINEZ SILGADO");
+        Profesor title = new Profesor("RAUL ANTONIO MARTINEZ SILGADO");
         _titleParents.add(title);
-        title = new Teacher("JOHNNY ALEJADNRO CSASTAÑEDA VILLA");
+        title = new Profesor("JOHNNY ALEJANDRO CASTAÑEDA VILLA");
         _titleParents.add(title);
-        /*title = new Teacher(String.format("Profesor 3"));
+        /*title = new Profesor(String.format("Profesor 3"));
         _titleParents.add(title);
-        title = new Teacher(String.format("Profesor 4"));
+        title = new Profesor(String.format("Profesor 4"));
         _titleParents.add(title);
-        title = new Teacher(String.format("Profesor 5"));
+        title = new Profesor(String.format("Profesor 5"));
         _titleParents.add(title);*/
         /*for(int i=1;i<=5;i++)
         {
@@ -43,7 +43,7 @@ public class TeacherCreator {
         return _titleCreator;
     }
 
-    public List<Teacher> getAll() {
+    public List<Profesor> getAll() {
         return _titleParents;
     }
 }
